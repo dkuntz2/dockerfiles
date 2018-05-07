@@ -1,0 +1,3 @@
+#!/bin/bash
+
+makemkvcon backup --decrypt --progress=-same disc:0 "/output/${movie}/"
