@@ -1,3 +1,3 @@
 #!/bin/bash
 
-handbrake-cli -i "$input" -o "/output/${movie}.mkv" --main-feature --preset="High Profile" --all-subtitles
+handbrake-cli -i "$input" -o "/output/${movie}.mkv" --main-feature --preset="HQ 1080p30 Surround" --all-subtitles
