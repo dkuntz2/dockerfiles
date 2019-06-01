@@ -1,3 +1,23 @@
 #!/bin/bash
 
-handbrake-cli -i "$input" -o "/output/${movie}.mkv" --main-feature --preset="HQ 1080p30 Surround" --all-subtitles --all-audio
+if [[ "${preset}x" == "x" ]]; then
+	if [[ "$format" == "bluray" ]]; then
+		preset="Fast 1080p30"
+	elif [[ "$format" == "hq" ]]; then
+		preset="HQ 1080p30 Surround"
+	else
+		preset="Fast 480p30"
+	fi
+fi
+
+echo "converting ${movie} into ${preset} mkv\n\n"
+
+handbrake-cli -i "$input" -o "/output/${movie}.mkv" --main-feature --preset="$preset" --all-subtitles --subtitle-burned="none" --all-audio
+
+RESULT=$?
+if [ $RESULT -eq 1 ]; then
+	/textme "successfully ripped ${movie}"
+else
+	/textme "failed ripping ${movie}"
+fi
+
