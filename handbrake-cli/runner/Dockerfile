@@ -1,4 +1,4 @@
-FROM handbrakecli
+FROM handbrake-cli
 
 ENV movie "video"
 ENV input "/dev/sr0"
